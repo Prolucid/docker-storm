@@ -1,0 +1,12 @@
+storm.zookeeper.servers: %zkservers%
+nimbus.host: "%nimbusserver%"
+drpc.servers: 
+ - "%drpcserver%"
+drpc.port: 3772
+drpc.invocations.port: 3773
+topology.workers: %topologyworkers% 
+topology.debug: %topologydebug%
+ui.port: 8081 
+supervisor.slots.ports:
+    - 6702
+    - 6703
