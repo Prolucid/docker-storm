@@ -6,7 +6,13 @@ drpc.port: 3772
 drpc.invocations.port: 3773
 topology.workers: %topologyworkers% 
 topology.debug: %topologydebug%
+topology.max.spout.pending: %max_spout_pending%
+topology.message.timeout.secs: %message_timeout_secs%
 ui.port: 8081 
 supervisor.slots.ports:
     - 6702
     - 6703
+storm.zookeeper.session.timeout: %zk_session_timeout%
+storm.zookeeper.connection.timeout: %zk_connection_timeout%
+supervisor.childopts: "-Xmx512m -XX:MaxPermSize=256m -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -verbose:gc -Xloggc:/var/log/storm/gc-storm-supervisor.log"
+worker.childopts: "-Xmx1024m -XX:MaxPermSize=256m -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -verbose:gc -Xloggc:/var/log/storm/gc-storm-worker-%ID%.log"
