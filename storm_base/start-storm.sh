@@ -12,5 +12,9 @@ sed -i -e "s/%nimbusserver%/$NIMBUS_SERVER/g" $STORM_HOME/conf/storm.yaml
 sed -i -e "s/%drpcserver%/$NIMBUS_SERVER/g" $STORM_HOME/conf/storm.yaml
 sed -i -e "s/%topologydebug%/$TOPOLOGY_DEBUG/g" $STORM_HOME/conf/storm.yaml
 sed -i -e "s/%topologyworkers%/$TOPOLOGY_WORKERS/g" $STORM_HOME/conf/storm.yaml
+sed -i -e "s/%message_timeout_secs%/$MESSAGE_TIMEOUT_SECS/g" $STORM_HOME/conf/storm.yaml
+sed -i -e "s/%zk_session_timeout%/$ZK_SESSION_TIMEOUT/g" $STORM_HOME/conf/storm.yaml
+sed -i -e "s/%zk_connection_timeout%/$ZK_CONNECTION_TIMEOUT/g" $STORM_HOME/conf/storm.yaml
+sed -i -e "s/%max_spout_pending%/$MAX_SPOUT_PENDING/g" $STORM_HOME/conf/storm.yaml
 
 exec storm %STORMAPP%
