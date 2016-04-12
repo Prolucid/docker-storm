@@ -17,7 +17,6 @@ RUN groupadd storm; useradd --gid storm --home-dir /home/storm --create-home --s
 RUN ln -s $STORM_HOME/bin/storm /usr/bin/storm
 
 # Add configuration + startup scripts
-ADD storm.yaml $STORM_HOME/conf/storm.yaml
 ADD cluster.xml $STORM_HOME/logback/cluster.xml
 
 RUN mkdir /etc/service/storm
