@@ -1,4 +1,4 @@
-FROM docker.prolucid.ca/prolucid_storm_base 
+FROM prolucid/storm-base 
 MAINTAINER Daniel Covello 
 
 # Configure ui startup script
