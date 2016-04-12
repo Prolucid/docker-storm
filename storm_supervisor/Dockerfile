@@ -2,7 +2,7 @@ FROM prolucid/storm_base
 MAINTAINER Daniel Covello 
 
 # The versions (github branches) that should be pulled and compiled
-ENV MONO_VERSION=mono-4.2.1.102
+ENV MONO_VERSION=mono-4.2.3.4
 
 # Install F# + Mono
 ENV SETUP_TOOLS="make pkg-config git autoconf libtool automake build-essential gettext "
