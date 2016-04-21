@@ -1,4 +1,4 @@
-FROM prolucid/storm_base 
+FROM prolucid/storm-base 
 MAINTAINER Daniel Covello 
 
 # The versions (github branches) that should be pulled and compiled
