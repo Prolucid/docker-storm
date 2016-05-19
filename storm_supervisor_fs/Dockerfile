@@ -1,20 +1,22 @@
-FROM prolucid/storm-supervisor-mono
+FROM prolucid/storm-base 
 MAINTAINER Daniel Covello 
 
 # The versions (github branches) that should be pulled and compiled
-ENV FS_VERSION=4.0.1.1 
+ENV MONO_VERSION=4.2.3.4
+ENV FS_VERSION=4.0.0.3-0xamarin1
 
-# Install  F# from source
-ENV FS_SETUP_TOOLS="autoconf libtool pkg-config make git automake"
+# Install F# + Mono
+ENV SETUP_TOOLS="make pkg-config git autoconf libtool automake build-essential gettext "
 WORKDIR /deploy
-RUN apt-get update -y && apt-get install -y $FS_SETUP_TOOLS \
-        && mozroots --import --sync \
-        && git clone https://github.com/fsharp/fsharp $FS_VERSION \
-        && cd $FS_VERSION \
-        && ./autogen.sh --prefix /usr/local \
-        && make \
-        && sudo make install \
-        && apt-get remove -y --purge $FS_SETUP_TOOLS \
-        && apt-get autoremove -y \
-        && rm -rf /deploy
+
+RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
+        echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots/$MONO_VERSION main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list && \
+        sudo apt-get update && \
+        sudo apt-get install -y mono-complete fsharp=$FS_VERSION
+
+# Configure supervisor startup script
+RUN sed -i -e "s/%STORMAPP%/supervisor/g" /etc/service/storm/run
+RUN chmod +x /etc/service/storm/run
+
+EXPOSE 6700 6701 6702 6703 8000
 
