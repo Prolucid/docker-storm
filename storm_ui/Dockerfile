@@ -1,4 +1,4 @@
-FROM prolucid/storm-base:0.0.1
+FROM prolucid/storm-base:0.0.2
 MAINTAINER Daniel Covello 
 
 # Configure ui startup script
