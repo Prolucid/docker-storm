@@ -1,4 +1,4 @@
-FROM prolucid/storm-base:0.0.2
+FROM prolucid/storm-base:0.0.3
 MAINTAINER Daniel Covello 
 
 # Make configure drpc run scripts
